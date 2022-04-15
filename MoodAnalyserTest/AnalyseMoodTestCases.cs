@@ -16,7 +16,7 @@ namespace MoodAnalyserTest
             string expected = "SAD";
             MoodAnalysis moodAnalysis = new MoodAnalysis(message);
             //Act
-            string actual = moodAnalysis.AnalyseMood();
+            string actual = moodAnalysis.AnalyseMood(message);
             //Assert
             Assert.AreEqual(expected, actual);
         }
@@ -30,8 +30,35 @@ namespace MoodAnalyserTest
             string expected = "HAPPY";
             MoodAnalysis moodAnalysis = new MoodAnalysis(message);
 
-            string actual = moodAnalysis.AnalyseMood();
+            string actual = moodAnalysis.AnalyseMood(message);
             
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestCategory("Happy Mood")]
+        [TestMethod]
+        public void TestHappyMoodMessageWithNoParamsShouldReturnHappy()
+        {
+
+            string message = "I am in happy mood";
+            string expected = "HAPPY";
+            MoodAnalysis moodAnalysis = new MoodAnalysis(message);
+
+            string actual = moodAnalysis.AnalyseMood();
+
+            Assert.AreEqual(expected, actual);
+        }
+        [TestCategory("Sad Mood")]
+        [TestMethod]
+        public void TestSadMoodMessageWithNoParamsShouldReturnSad()
+        {
+
+            string message = "I am in sad mood";
+            string expected = "SAD";
+            MoodAnalysis moodAnalysis = new MoodAnalysis(message);
+
+            string actual = moodAnalysis.AnalyseMood();
+
             Assert.AreEqual(expected, actual);
         }
     }

@@ -13,9 +13,20 @@ namespace MoodAnalyser
         {
             this.message = message;
         }
-        public string AnalyseMood() //method to analyse mood
+        public string AnalyseMood(string message) //method to analyse mood
         {
-            if(this.message.ToLower().Contains("sad"))
+            if(message.ToLower().Contains("sad"))
+            {
+                return "SAD";
+            }
+            else
+            {
+                return "HAPPY";
+            }
+        }
+        public string AnalyseMood()
+        {
+            if (this.message.ToLower().Contains("sad"))
             {
                 return "SAD";
             }
