@@ -9,7 +9,7 @@ namespace MoodAnalyserTest
     {
         [TestCategory("Sad Mood")]
         [TestMethod]
-        public void TestSadMoodMessage()//AAA
+        public void TestIamInSadMoodShouldReturnSad()//AAA
         {
             //Arrange
             string message = "I am in Sad mood";
@@ -23,7 +23,7 @@ namespace MoodAnalyserTest
 
         [TestCategory("Happy Mood")]
         [TestMethod]
-        public void TestHappyMoodMessage()
+        public void TestIamInAnyMoodShouldReturnHappy()
         {
             
             string message = "I am in Any mood";
