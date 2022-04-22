@@ -7,11 +7,11 @@ namespace MoodAnalyserTest
     [TestClass]
     public class AnalyseMoodTestCases
     {
-        MoodAnalyserFactory factory;
+        MoodAnalyserReflector reflector;
         [TestInitialize]
         public void Setup()
         {
-            factory = new MoodAnalyserFactory();
+            reflector = new MoodAnalyserReflector();
         }
 
         [TestCategory("Sad Mood")]
@@ -96,7 +96,7 @@ namespace MoodAnalyserTest
             MoodAnalysis expected = new MoodAnalysis();
             object obj;
 
-            obj = factory.CreatemoodAnalyse(className, constructorName);
+            obj = reflector.CreatemoodAnalyse(className, constructorName);
             expected.Equals(obj);
         }
         //TC 4.2 - improper class details are provided and expected to throw exception Class not found
@@ -107,7 +107,7 @@ namespace MoodAnalyserTest
         {
             try
             {
-                object actual = factory.CreatemoodAnalyse(className, constructorName);
+                object actual = reflector.CreatemoodAnalyse(className, constructorName);
             }
             catch(CustomException ex)
             {
@@ -122,7 +122,7 @@ namespace MoodAnalyserTest
         {
             try
             {
-                object actual = factory.CreatemoodAnalyse(className, constructorName);
+                object actual = reflector.CreatemoodAnalyse(className, constructorName);
             }
             catch (CustomException ex)
             {
@@ -140,7 +140,7 @@ namespace MoodAnalyserTest
             object obj = null;
             try
             {
-                obj = factory.CreateMoodAnalyseParameterObject("MoodAnalysis", "MoodAnalysis", message);
+                obj = reflector.CreateMoodAnalyseParameterObject("MoodAnalysis", "MoodAnalysis", message);
             }
             catch (CustomException actual)
             {
@@ -158,7 +158,7 @@ namespace MoodAnalyserTest
             object obj = null;
             try
             {
-                obj = factory.CreateMoodAnalyseParameterObject(className, "MoodAnalysis", message);
+                obj = reflector.CreateMoodAnalyseParameterObject(className, "MoodAnalysis", message);
 
             }
             catch (CustomException ex)
@@ -176,7 +176,7 @@ namespace MoodAnalyserTest
             object obj;
             try
             {
-                obj = factory.CreateMoodAnalyseParameterObject("MoodAnalysis", construtorName, message);
+                obj = reflector.CreateMoodAnalyseParameterObject("MoodAnalysis", construtorName, message);
 
             }
             catch (CustomException ex)
@@ -193,7 +193,7 @@ namespace MoodAnalyserTest
         {
             try
             {
-                string actual = factory.InvokeAnalyseMood("happy", "AnalyseMood");
+                string actual = reflector.InvokeAnalyseMood("happy", "AnalyseMood");
             }
             catch (CustomException ex)
             {
