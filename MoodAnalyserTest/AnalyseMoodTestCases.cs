@@ -200,5 +200,54 @@ namespace MoodAnalyserTest
                 Assert.AreEqual(expected, ex.Message);
             }
         }
+        //UC 7.1 Set Happy Message With Reflector Should Return Happy
+        [TestCategory("Reflection")]
+        [TestMethod]
+        [DataRow("happy", "happy", "message")]
+        [DataRow("sad", "sad", "message")]
+        public void SetHappyMessageWithReflectorShouldReturnHappy(string value, string expected, string fieldName)
+        {
+            try
+            {
+                string actual = reflector.SetField(value, fieldName);
+                Assert.AreEqual(expected, actual);
+            }
+            catch (CustomException ex)
+            {
+                Assert.AreEqual(expected, ex.Message);
+            }
+        }
+        //UC 7.2 Set Field When Improper Should Throw Exception NoSuchField
+        [TestCategory("Reflection")]
+        [TestMethod]
+        [DataRow("happy", "field not found", "improperField")]
+        public void SetFieldWhenImproperShouldThrowExceptionNoSuchField(string value, string expected, string fieldName)
+        {
+            try
+            {
+                string actual = reflector.SetField(value, fieldName);
+                Assert.AreEqual(expected, actual);
+            }
+            catch (CustomException ex)
+            {
+                Assert.AreEqual(expected, ex.Message);
+            }
+        }
+        //UC 7.3 Null Message With Reflector Should throw exception
+        [TestCategory("Reflection")]
+        [TestMethod]
+        [DataRow(null, "message should not be null", "message")]
+        public void SettingNullMessageWithReflectorShouldThrowException(string value, string expected, string fieldName)
+        {
+            try
+            {
+                string actual = reflector.SetField(value, fieldName);
+                Assert.AreEqual(expected, actual);
+            }
+            catch (CustomException ex)
+            {
+                Assert.AreEqual(expected, ex.Message);
+            }
+        }
     }
 }
