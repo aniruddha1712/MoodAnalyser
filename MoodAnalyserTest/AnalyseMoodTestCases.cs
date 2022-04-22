@@ -184,5 +184,21 @@ namespace MoodAnalyserTest
                 Assert.AreEqual(expexted, ex.Message);
             }
         }
+        //UC 6.1,6.2 - Method to invoke analyse mood method to return happy or sad or invalid method
+        [TestCategory("Reflection")]
+        [TestMethod]
+        [DataRow("HAPPY")]
+        [DataRow("Method not found")]
+        public void ReflectionReturnMethod(string expected)
+        {
+            try
+            {
+                string actual = factory.InvokeAnalyseMood("happy", "AnalyseMood");
+            }
+            catch (CustomException ex)
+            {
+                Assert.AreEqual(expected, ex.Message);
+            }
+        }
     }
 }
